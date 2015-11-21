@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Threading;
 using NUnit.Framework;
+using jcWebGuiTools;
+using OpenQA.Selenium.Firefox;
 
-namespace TestSuite
+namespace TestSets
 {
     /// <summary>
     /// The Dev class is used for the development of tests. It is a type of sandbox.
@@ -48,6 +50,16 @@ namespace TestSuite
             Assert.That(true, "test should have passed");
         }
 
+        [Test]
+        public void OpenBrowser()
+        {
+            jcWebBrowser br = new jcWebBrowser(new FirefoxDriver());
+            br.GotoUrl("http://en.wikipedia.org");
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+
+            br.Close();
+
+        }
 
     }
 }
