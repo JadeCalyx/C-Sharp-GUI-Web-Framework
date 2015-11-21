@@ -6,6 +6,7 @@ using System.Threading;
 using NUnit.Framework;
 using jcWebGuiTools;
 using OpenQA.Selenium.Firefox;
+using System.Reflection;
 
 namespace TestSets
 {
@@ -53,10 +54,12 @@ namespace TestSets
         [Test]
         public void OpenBrowser()
         {
-            jcWebBrowser br = new jcWebBrowser(new FirefoxDriver());
-            br.GotoUrl("http://en.wikipedia.org");
-            Thread.Sleep(TimeSpan.FromSeconds(3));
 
+            jcWebBrowser br = new jcWebBrowser("firefox", "Wikipedia", "http://en.wikipedia.org");
+            br.GotoPage("main-page");
+            Thread.Sleep(TimeSpan.FromSeconds(3));
+            br.GotoPage("archery-page");
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             br.Close();
 
         }

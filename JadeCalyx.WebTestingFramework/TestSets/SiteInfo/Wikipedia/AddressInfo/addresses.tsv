@@ -1,0 +1,3 @@
+﻿-	handle	segment	mask
++	main-page	wiki/Main_Page	^http(s)?://.+/wiki/Main_Page$
++	archery-page	wiki/Archery	^http(s)?://.+/wiki/Archery$

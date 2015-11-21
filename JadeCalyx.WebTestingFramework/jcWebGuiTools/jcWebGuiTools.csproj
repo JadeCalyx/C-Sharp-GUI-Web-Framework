@@ -45,7 +45,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="jcAddressAtlas.cs" />
+    <Compile Include="jcAddressInfoReader.cs" />
+    <Compile Include="jcAddressObject.cs" />
     <Compile Include="jcWebBrowser.cs" />
     <Compile Include="jcWebPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
