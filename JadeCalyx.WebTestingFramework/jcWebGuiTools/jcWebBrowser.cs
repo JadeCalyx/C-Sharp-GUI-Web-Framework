@@ -12,10 +12,11 @@ namespace jcWebGuiTools
     {
         IWebDriver _driver;
         jcAddressAtlas _addressAtlas;
+        string _site;
          
         public jcWebBrowser(string driverType, string site, string urlPrefix)
         {
-            //_driver = driver;
+            _site = site;
             _addressAtlas = new jcAddressAtlas(urlPrefix, site);
             setrDriver(driverType);
         }
@@ -23,6 +24,11 @@ namespace jcWebGuiTools
         public void Close()
         {
             _driver.Quit();
+        }
+
+        public jcWebPage GetPage()
+        {
+            return new jcWebPage(_driver, _site, "main-page");
         }
 
         public void GotoPage(string handle)

@@ -7,6 +7,8 @@ using NUnit.Framework;
 using jcWebGuiTools;
 using OpenQA.Selenium.Firefox;
 using System.Reflection;
+using System.Configuration;
+using TestSets.Utilities;
 
 namespace TestSets
 {
@@ -23,10 +25,14 @@ namespace TestSets
     [TestFixture]
     public class Dev
     {
+        jcBrowserFactory _browserFactory;
+        AppFile _appFile;
+
         [OneTimeSetUp]
         public void ClassSetup()
         {
-
+            _appFile = new AppFile();
+            _browserFactory = new jcBrowserFactory("Wikipedia", _appFile.WebPrefix);
         }
         [OneTimeTearDown]
         public void ClassTeardown()
@@ -54,11 +60,13 @@ namespace TestSets
         [Test]
         public void OpenBrowser()
         {
-
-            jcWebBrowser br = new jcWebBrowser("firefox", "Wikipedia", "http://en.wikipedia.org");
+            var p = ConfigurationManager.AppSettings["WebPrefix"];
+            var br = _browserFactory.GetBrowser("firefox");
             br.GotoPage("main-page");
+            br.GetPage().SetText("search-box", "archery");
+            br.GetPage().Click("search-button");
             Thread.Sleep(TimeSpan.FromSeconds(3));
-            br.GotoPage("archery-page");
+            //br.GotoPage("archery-page");
             Thread.Sleep(TimeSpan.FromSeconds(3));
             br.Close();
 

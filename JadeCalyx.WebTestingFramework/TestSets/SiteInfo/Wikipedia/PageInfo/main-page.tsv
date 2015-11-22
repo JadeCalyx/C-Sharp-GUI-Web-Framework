@@ -1,0 +1,3 @@
+﻿-	handle	method	details
++	search-box	css	input[id="searchInput"]
++	search-button	css	input[id="searchButton"]
