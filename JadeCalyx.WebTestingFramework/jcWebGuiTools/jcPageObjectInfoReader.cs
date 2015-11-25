@@ -33,6 +33,10 @@ namespace jcWebGuiTools
                     {
                         returnList.Add(parts.Skip(1).ToArray());
                     }
+                    if (parts[0].Equals("++") && (parts.Length > 1))
+                    {
+                        returnList.AddRange(GetObjectLookupList(parts[1]));
+                    }
                 }
             }
             return returnList;

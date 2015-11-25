@@ -27,6 +27,7 @@ namespace TestSets
     {
         jcBrowserFactory _browserFactory;
         AppFile _appFile;
+        jcBrowser _br;
 
         [OneTimeSetUp]
         public void ClassSetup()
@@ -47,7 +48,16 @@ namespace TestSets
         [TearDown]
         public void TestTeardown()
         {
-
+            try
+            {
+                Console.WriteLine("Closing Browserr");
+                _br.Close();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error closing browser");
+            }
+            
         }
 
         [Test]
@@ -61,14 +71,14 @@ namespace TestSets
         public void OpenBrowser()
         {
             var p = ConfigurationManager.AppSettings["WebPrefix"];
-            var br = _browserFactory.GetBrowser("firefox");
-            br.GotoPage("main-page");
-            br.GetPage().SetText("search-box", "archery");
-            br.GetPage().Click("search-button");
+            _br = _browserFactory.GetBrowser("firefox");
+            _br.GotoPage("main-page");
+            _br.GetPage().SetText("search-box", "archery");
+            _br.GetPage().Click("search-button");
             Thread.Sleep(TimeSpan.FromSeconds(3));
-            //br.GotoPage("archery-page");
+            Assert.That(_br.GetPage().IsCurrentHandle("archery-page"), "not archery");
             Thread.Sleep(TimeSpan.FromSeconds(3));
-            br.Close();
+            _br.Close();
 
         }
 

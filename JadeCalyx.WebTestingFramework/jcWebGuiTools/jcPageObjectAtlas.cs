@@ -23,7 +23,7 @@ namespace jcWebGuiTools
         public Stack<jcPageObjectLookupPair> GetLooukupInfo(string objectHandle)
         {
             var returnStack = new Stack<jcPageObjectLookupPair>();
-            var lookupList = _pageObjectIndex[objectHandle];
+            var lookupList = expandHandles(objectHandle);
             for (var i = (lookupList.Count - 1); i > -1; i--)
             {
                 returnStack.Push(lookupList[i]);
@@ -31,6 +31,23 @@ namespace jcWebGuiTools
             return returnStack;
         }
 
+        private List<jcPageObjectLookupPair> expandHandles(string objectHandle)
+        {
+            var returnList = new List<jcPageObjectLookupPair>();
+            var lookupList = _pageObjectIndex[objectHandle];
+            foreach (var lookupItem in lookupList)
+            {
+                if (lookupItem.Method.Equals("css"))
+                {
+                    returnList.Add(lookupItem);
+                }
+                if (lookupItem.Method.Equals("handle"))
+                {
+                    returnList.AddRange(expandHandles(lookupItem.Details));
+                }
+            }
+            return returnList;
+        }
 
 
         private void loadIndex()

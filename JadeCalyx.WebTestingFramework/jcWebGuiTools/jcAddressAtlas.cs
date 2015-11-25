@@ -24,6 +24,20 @@ namespace jcWebGuiTools
             return url;
         }
 
+        public string GetPageHandleFromUrl(string url)
+        {
+            string returnKey = "dummy";
+            foreach (var item in _addressIndex)
+            {
+                if (item.Value.MatchesAddress(url))
+                {
+                    returnKey = item.Key;
+                    break;
+                }
+            }
+            return returnKey;
+        }
+
         private void loadIndex(string site)
         {
             _addressIndex = new Dictionary<string, jcAddressObject>();

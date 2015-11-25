@@ -80,7 +80,11 @@
     <None Include="SiteInfo\Wikipedia\AddressInfo\addresses.tsv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\archery-page.tsv" />
     <None Include="SiteInfo\Wikipedia\PageInfo\main-page.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\menu-head.tsv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

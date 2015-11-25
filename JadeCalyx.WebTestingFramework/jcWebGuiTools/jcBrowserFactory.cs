@@ -17,9 +17,9 @@ namespace jcWebGuiTools
             _prefix = prefix;
         }
 
-        public jcWebBrowser GetBrowser(string type)
+        public jcBrowser GetBrowser(string type)
         {
-            return new jcWebBrowser(type, _site, _prefix);
+            return new jcBrowser(type, _site, _prefix);
         }
 
     }

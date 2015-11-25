@@ -8,17 +8,19 @@ using OpenQA.Selenium.Firefox;
 
 namespace jcWebGuiTools
 {
-    public class jcWebBrowser
+    public class jcBrowser
     {
         IWebDriver _driver;
         jcAddressAtlas _addressAtlas;
         string _site;
+        jcPageFactory _pageFactory;
          
-        public jcWebBrowser(string driverType, string site, string urlPrefix)
+        public jcBrowser(string driverType, string site, string urlPrefix)
         {
             _site = site;
             _addressAtlas = new jcAddressAtlas(urlPrefix, site);
             setrDriver(driverType);
+            _pageFactory = new jcPageFactory(_driver, _addressAtlas, _site);
         }
 
         public void Close()
@@ -26,9 +28,9 @@ namespace jcWebGuiTools
             _driver.Quit();
         }
 
-        public jcWebPage GetPage()
+        public jcPage GetPage()
         {
-            return new jcWebPage(_driver, _site, "main-page");
+            return new jcPage(_driver, _site, "main-page");
         }
 
         public void GotoPage(string handle)

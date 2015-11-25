@@ -23,7 +23,7 @@ namespace jcWebGuiTools
             set { }
         }
 
-        public string Value
+        public string Details
         {
             get { return _lookupValue; }
             set { }

@@ -49,12 +49,12 @@
     <Compile Include="jcAddressInfoReader.cs" />
     <Compile Include="jcAddressObject.cs" />
     <Compile Include="jcBrowserFactory.cs" />
+    <Compile Include="jcPageFactory.cs" />
     <Compile Include="jcPageObjectAtlas.cs" />
     <Compile Include="jcPageObjectInfoReader.cs" />
     <Compile Include="jcPageObjectLookupPair.cs" />
-    <Compile Include="jcPageObjectSet.cs" />
-    <Compile Include="jcWebBrowser.cs" />
-    <Compile Include="jcWebPage.cs" />
+    <Compile Include="jcBrowser.cs" />
+    <Compile Include="jcPage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
