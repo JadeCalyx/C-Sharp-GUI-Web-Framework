@@ -37,8 +37,7 @@ namespace jcWebGuiTools
         {
             var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
             var el = getElement(lookupInfo, null);
-            el.Clear();
-            el.SendKeys(textToSet);
+            el.ThrowIfNotFound(objectHandle).Clear().SetText(textToSet);
             return this;
         }
 
@@ -46,15 +45,15 @@ namespace jcWebGuiTools
         {
             var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
             var el = getElement(lookupInfo, null);
-            el.Click();
+            el.ThrowIfNotFound(objectHandle).Click();
             return this;
         }
 
-        public IWebElement getElement(Stack<jcPageObjectLookupPair> lookupInfo, IWebElement currElement)
+        public jcElementWrapper getElement(Stack<jcPageObjectLookupPair> lookupInfo, IWebElement currElement)
         {
             if (lookupInfo.Count < 1)
             {
-                return currElement;
+                return new jcElementWrapper(currElement);
             }
             IReadOnlyCollection<IWebElement> elements;
             var currLookup = lookupInfo.Pop();
@@ -68,7 +67,10 @@ namespace jcWebGuiTools
             } 
             if (elements.Count < 1)
             {
-                return null;
+                string err = String.Format("Unable to find element: '{0} {1}'", 
+                    currLookup.Method,
+                    currLookup.Details);
+                return new jcElementWrapper(null).SetErrorMsg(err);
             }
             else
             {

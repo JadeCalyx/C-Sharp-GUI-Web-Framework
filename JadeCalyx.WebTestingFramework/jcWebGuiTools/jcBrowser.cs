@@ -14,6 +14,7 @@ namespace jcWebGuiTools
         jcAddressAtlas _addressAtlas;
         string _site;
         jcPageFactory _pageFactory;
+        jcPage _currPage = null;
          
         public jcBrowser(string driverType, string site, string urlPrefix)
         {
@@ -30,7 +31,8 @@ namespace jcWebGuiTools
 
         public jcPage GetPage()
         {
-            return new jcPage(_driver, _site, "main-page");
+            _currPage = _pageFactory.GetPage(_currPage);
+            return _currPage;
         }
 
         public void GotoPage(string handle)

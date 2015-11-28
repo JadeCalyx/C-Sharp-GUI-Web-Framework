@@ -75,12 +75,40 @@ namespace TestSets
             _br.GotoPage("main-page");
             _br.GetPage().SetText("search-box", "archery");
             _br.GetPage().Click("search-button");
+            _br.GetPage().Click("dummy-button");
             Thread.Sleep(TimeSpan.FromSeconds(3));
             Assert.That(_br.GetPage().IsCurrentHandle("archery-page"), "not archery");
             Thread.Sleep(TimeSpan.FromSeconds(3));
             _br.Close();
 
         }
+
+        [Test]
+        public void TopBar()
+        {
+            var p = ConfigurationManager.AppSettings["WebPrefix"];
+            _br = _browserFactory.GetBrowser("firefox");
+            _br.GotoPage("main-page");
+            _br.GetPage().Click("create-account-anchor");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            _br.GotoPage("main-page");
+            _br.GetPage().Click("talk-anchor");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            _br.GotoPage("main-page");
+            _br.GetPage().Click("contributions-anchor");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+            _br.GotoPage("main-page");
+            _br.GetPage().Click("login-anchor");
+            Thread.Sleep(TimeSpan.FromSeconds(2));
+
+
+           _br.Close();
+
+        }
+
 
     }
 }

@@ -49,6 +49,7 @@
     <Compile Include="jcAddressInfoReader.cs" />
     <Compile Include="jcAddressObject.cs" />
     <Compile Include="jcBrowserFactory.cs" />
+    <Compile Include="jcElementWrapper.cs" />
     <Compile Include="jcPageFactory.cs" />
     <Compile Include="jcPageObjectAtlas.cs" />
     <Compile Include="jcPageObjectInfoReader.cs" />

@@ -49,7 +49,6 @@ namespace jcWebGuiTools
             return returnList;
         }
 
-
         private void loadIndex()
         {
             var objectList = new jcPageObjectInfoReader(_site).GetObjectLookupList(_pageHandle);
