@@ -46,10 +46,13 @@ namespace TestSets
         {
             var p = ConfigurationManager.AppSettings["WebPrefix"];
             _br = _browserFactory.GetBrowser("firefox");
+            _br.Maximize();
             _br.GotoPage("main-page");
+            Thread.Sleep(TimeSpan.FromSeconds(3));
             _br.GetPage().SetText("search-box", "archery");
+            
             _br.GetPage().Click("search-button");
-            _br.GetPage().Click("dummy-button");
+            //_br.GetPage().Click("dummy-button");
             Thread.Sleep(TimeSpan.FromSeconds(3));
             Assert.That(_br.GetPage().IsCurrentHandle("archery-page"), "not archery");
             Thread.Sleep(TimeSpan.FromSeconds(3));

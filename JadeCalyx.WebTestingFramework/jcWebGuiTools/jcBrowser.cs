@@ -35,15 +35,23 @@ namespace jcWebGuiTools
             return _currPage;
         }
 
-        public void GotoPage(string handle)
+        public jcBrowser GotoPage(string handle)
         {
             var url = _addressAtlas.GetUrl(handle);
             _driver.Navigate().GoToUrl(url);
+            return this;
         }
 
-        public void GotoUrl(String url)
+        public jcBrowser GotoUrl(String url)
         {
             _driver.Navigate().GoToUrl(url);
+            return this;
+        }
+
+        public jcBrowser Maximize()
+        {
+            _driver.Manage().Window.Maximize();
+            return this;
         }
 
         private void setrDriver(string driverType)
