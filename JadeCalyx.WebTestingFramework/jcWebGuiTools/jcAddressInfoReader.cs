@@ -8,15 +8,26 @@ using System.Reflection;
 
 namespace jcWebGuiTools
 {
+    /// <summary>
+    /// Reads the address info from the file it is stored in.
+    /// </summary>
     public class jcAddressInfoReader
     {
         string _site;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="jcAddressInfoReader"/> class.
+        /// </summary>
+        /// <param name="site">The site handle name.</param>
         public jcAddressInfoReader(string site)
         {
             _site = site;
         }
-
+        /// <summary>
+        /// Gets the address list.
+        /// </summary>
+        /// <param name="fileName">Name of the file without suffix. Defaults to "addresses". </param>
+        /// <returns>A list of string arrays. 
+        /// Each array is in the format of handle, segment, mask.</returns>
         public List<string[]> GetAddressList(string fileName = "addresses")
         {
             var returnList = new List<string[]>();

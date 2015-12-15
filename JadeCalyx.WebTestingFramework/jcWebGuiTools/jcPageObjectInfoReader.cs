@@ -15,7 +15,9 @@ namespace jcWebGuiTools
     {
         string _site;
         /// <summary>
-        /// 
+        /// Reads the page page object info for a specific page. 
+        /// Its purpose is to act as an abstraction layer between the 
+        /// stored page object information and the application.
         /// </summary>
         /// <param name="site"></param>
         public jcPageObjectInfoReader(string site)
@@ -26,7 +28,9 @@ namespace jcWebGuiTools
         /// Gets the object lookup list.
         /// </summary>
         /// <param name="pageHandle">The page handle.</param>
-        /// <returns></returns>
+        /// <returns>Returns a list of string arrays.
+        /// Each array is in the form of page-handle, lookupType, lookupDetails, ...
+        /// with the lookupType, lookupDetials pair being repeated as needed. </returns>
         public List<string[]> GetObjectLookupList(string pageHandle)
         {
             var returnList = new List<string[]>();
