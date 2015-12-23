@@ -6,12 +6,20 @@ using System.Threading.Tasks;
 
 namespace jcWebGuiTools
 {
+    /// <summary>
+    /// A helper object to store info on object location.
+    /// </summary>
     public class jcPageObjectAtlas
     {
         string _site;
         string _pageHandle;
         Dictionary<string, List<jcPageObjectLookupPair>> _pageObjectIndex;
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="jcPageObjectAtlas"/> class.
+        /// Provides a way to access the object lookup info.
+        /// </summary>
+        /// <param name="site">The site.</param>
+        /// <param name="pageHandle">The page handle.</param>
         public jcPageObjectAtlas(string site, string pageHandle)
         {
             _site = site;
@@ -19,7 +27,11 @@ namespace jcWebGuiTools
             _pageObjectIndex = new Dictionary<string, List<jcPageObjectLookupPair>>();
             loadIndex();
         }
-    
+        /// <summary>
+        /// Gets the looukup information.
+        /// </summary>
+        /// <param name="objectHandle">The object handle.</param>
+        /// <returns></returns>
         public Stack<jcPageObjectLookupPair> GetLooukupInfo(string objectHandle)
         {
             var returnStack = new Stack<jcPageObjectLookupPair>();
@@ -30,7 +42,12 @@ namespace jcWebGuiTools
             }
             return returnStack;
         }
-
+        /// <summary>
+        /// Expands the handles. Takes the objects lookups that have a definition of
+        /// handle and replaces them with the detailed lookup.
+        /// </summary>
+        /// <param name="objectHandle">The object handle.</param>
+        /// <returns></returns>
         private List<jcPageObjectLookupPair> expandHandles(string objectHandle)
         {
             var returnList = new List<jcPageObjectLookupPair>();
@@ -48,7 +65,9 @@ namespace jcWebGuiTools
             }
             return returnList;
         }
-
+        /// <summary>
+        /// Loads the object index.
+        /// </summary>
         private void loadIndex()
         {
             var objectList = new jcPageObjectInfoReader(_site).GetObjectLookupList(_pageHandle);

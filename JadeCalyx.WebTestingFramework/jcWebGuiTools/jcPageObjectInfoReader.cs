@@ -9,7 +9,7 @@ using System.Reflection;
 namespace jcWebGuiTools
 {
     /// <summary>
-    /// 
+    /// Tool to read object information from source files.
     /// </summary>
     class jcPageObjectInfoReader
     {

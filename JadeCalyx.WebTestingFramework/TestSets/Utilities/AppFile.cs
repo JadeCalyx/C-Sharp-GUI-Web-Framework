@@ -7,9 +7,17 @@ using System.Configuration;
 
 namespace TestSets.Utilities
 {
+    /// <summary>
+    /// A wrapper for the app.config file.
+    /// </summary>
     public class AppFile
     {
-
+        /// <summary>
+        /// Gets the web prefix.
+        /// </summary>
+        /// <value>
+        /// The web prefix.
+        /// </value>
         public string WebPrefix
         {
             get
