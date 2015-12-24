@@ -69,7 +69,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Dev.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SiteInfo\Wikipedia\jcWebPage.cs" />
+    <Compile Include="Tests\SearchTests.cs" />
     <Compile Include="Utilities\AppFile.cs" />
   </ItemGroup>
   <ItemGroup>
