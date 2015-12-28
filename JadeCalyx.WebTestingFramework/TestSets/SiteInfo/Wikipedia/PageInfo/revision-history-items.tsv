@@ -1,0 +1,13 @@
+﻿-	handle	method	details
++	rh-content	css	div[id="content"]
++	rh-body-content	handle	rh-content	css	div[id="bodyContent"]
++	newist-anchor	handle	rh-body-content	css	a[class="mw-firstlink"]
++	oldest-anchor	handle	rh-body-content	css	a[class="mw-lastlink"]
++	newer-500-anchor	handle	rh-body-content	css	a[class="mw-prevlink"]
++	older-500-anchor	handle	rh-body-content	css	a[class="mw=nextlink"]
++	limit-to-20-anchor	handle	rh-body-content	css	a[class="mw-numlink"][href*="limit=20&"]
++	limit-to-50-anchor	handle	rh-body-content	css	a[class="mw-numlink"][href*="limit=50&"]
++	limit-to-100-anchor	handle	rh-body-content	css	a[class="mw-numlink"][href*="limit=100&"]
++	limit-to-250-anchor	handle	rh-body-content	css	a[class="mw-numlink"][href*="limit=250&"]
++	limit-to-500-anchor	handle	rh-body-content	css	a[class="mw-numlink"][href*="limit=500&"]
++	page-history-list	handle	rh-body-content	css	ul[id="pagehistory"]
