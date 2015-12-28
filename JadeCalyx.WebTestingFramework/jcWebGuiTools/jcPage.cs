@@ -75,6 +75,20 @@ namespace jcWebGuiTools
             return this;
         }
         /// <summary>
+        /// Gets the web list.
+        /// If element is type of web list (ul or ol) then returns as list of li items.
+        /// Otherwise, throws error.
+        /// </summary>
+        /// <param name="objectHandle">The object handle.</param>
+        /// <returns></returns>
+        public List<jcElementWrapper> GetWebList(string objectHandle)
+        {
+            var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
+            var el = getElement(lookupInfo, null);
+            return el.ThrowIfNotFound(objectHandle).GetAsList();
+        }
+
+        /// <summary>
         /// Gets the element.
         /// </summary>
         /// <param name="lookupInfo">The lookup information.</param>

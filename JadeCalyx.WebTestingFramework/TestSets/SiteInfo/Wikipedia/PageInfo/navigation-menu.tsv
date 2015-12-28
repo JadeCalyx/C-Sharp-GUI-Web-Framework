@@ -8,6 +8,7 @@
 +	talk-anchor	handle	personal-nav	css	li[id="pt-mytalk"]	css	a
 +	contributions-anchor	handle	personal-nav	css	li[id="pt-mycontris"]	css	a
 +	login-anchor	handle	personal-nav	css	li[id="pt-login"]	css	a
++	view-history-anchor	handle	menu-right-navigation	css	li[id="ca-history"]	css	a
 -	*** search box
 +	search-box	handle	menu-right-navigation	css	div[id="p-search"]	css	input[id="searchInput"]
 +	search-button	handle	menu-right-navigation	css	div[id="p-search"]	css	input[id="searchButton"]

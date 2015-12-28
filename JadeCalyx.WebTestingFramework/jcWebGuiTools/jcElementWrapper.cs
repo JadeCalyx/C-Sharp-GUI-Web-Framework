@@ -76,5 +76,27 @@ namespace jcWebGuiTools
             _element.Click();
             return this;
         }
+        
+        public List<jcElementWrapper> GetAsList()
+        {
+            var returnList = new List<jcElementWrapper>();
+            var elements = _element.FindElements(By.CssSelector("li"));
+            foreach (var el in elements)
+            {
+                returnList.Add(new jcElementWrapper(el));
+            }
+            return returnList;
+        }
+
+        public jcElementWrapper FindSubElement(string css)
+        {
+            var theElement = _element.FindElements(By.CssSelector(css)).FirstOrDefault();
+            return new jcElementWrapper(theElement);
+        }
+
+        public string GetElementText()
+        {
+            return _element.Text;
+        }
     }
 }

@@ -69,6 +69,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Dev.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tests\HistoryTests.cs" />
     <Compile Include="Tests\SearchTests.cs" />
     <Compile Include="Utilities\AppFile.cs" />
   </ItemGroup>
@@ -83,14 +84,30 @@
     <None Include="SiteInfo\Wikipedia\PageInfo\archery-page.tsv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\dummy.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\main-page-view-history.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="SiteInfo\Wikipedia\PageInfo\main-page.tsv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="SiteInfo\Wikipedia\PageInfo\navigation-menu.tsv">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\revision-history-items.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="SiteInfo\Wikipedia\PageInfo\view-history-page.tsv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9c88b910-1c33-4f97-aefe-37ae6d578bb2}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\jcWebGuiTools\jcWebGuiTools.csproj">
       <Project>{8981b7ab-9ee9-4844-bcb4-7cfb00b56633}</Project>
       <Name>jcWebGuiTools</Name>

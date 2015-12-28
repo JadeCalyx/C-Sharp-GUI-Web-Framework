@@ -50,6 +50,7 @@
     <Compile Include="jcAddressInfoReader.cs" />
     <Compile Include="jcAddressObject.cs" />
     <Compile Include="jcBrowserFactory.cs" />
+    <Compile Include="jcElementHelper.cs" />
     <Compile Include="jcElementWrapper.cs" />
     <Compile Include="jcPageFactory.cs" />
     <Compile Include="jcPageObjectAtlas.cs" />
@@ -67,6 +68,12 @@
       <Link>chromedriver.exe</Link>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{9c88b910-1c33-4f97-aefe-37ae6d578bb2}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
