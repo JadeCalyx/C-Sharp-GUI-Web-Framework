@@ -2,4 +2,4 @@
 +	main-page	wiki/Main_Page	^http(s)?://.+/wiki/Main_Page$
 -	main-page-view-history	w/index.php?title=Main_Page&action=history	^http(s)?://.+/w/index.php[?]title=Main_Page&action=history
 +	archery-page	wiki/Archery	^http(s)?://.+/wiki/Archery$
-+	view-history-page	dummy	^http(s)?://.+/w/index.php[?]title=[a-z,A-Z,_]+&action=history
++	view-history-page	dummy	^http(s)?://.+/w/index.php[?]title=[a-z,A-Z,_]+(&offset=&limit=[0-9]([0-9])?([0-9])?)?&action=history	
