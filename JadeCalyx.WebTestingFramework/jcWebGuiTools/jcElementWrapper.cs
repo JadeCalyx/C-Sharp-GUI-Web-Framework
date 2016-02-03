@@ -98,5 +98,19 @@ namespace jcWebGuiTools
         {
             return _element.Text;
         }
+
+        public int GetHashCode(int currHash)
+        {
+            if (_element == null)
+            {
+                return currHash;
+            }
+            return GetHashCode();
+        }
+
+        public int GetHashCode()
+        {
+            return _element.GetAttribute("outerHTML").GetHashCode();
+        }
     }
 }

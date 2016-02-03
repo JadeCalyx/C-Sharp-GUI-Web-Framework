@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using OpenQA.Selenium;
+using System.Threading;
 
 namespace jcWebGuiTools
 {
@@ -88,13 +89,38 @@ namespace jcWebGuiTools
             return el.ThrowIfNotFound(objectHandle).GetAsList();
         }
 
+        public bool WaitTillHashChanges(int baseHash, string objectHandle, int timeout = 30)
+        {
+          
+            var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
+            var el = getElement(lookupInfo, null);
+            var newHash = el.GetHashCode(baseHash);
+            while ((baseHash == newHash) && (timeout-- > 0))
+            {
+                Thread.Sleep(TimeSpan.FromSeconds(1));
+                newHash = getElement(lookupInfo, null).GetHashCode(baseHash);
+            }
+            if (baseHash == newHash)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public jcElementWrapper GetElement(string objectHandle)
+        { 
+            var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
+            var el = getElement(lookupInfo, null);
+            return el.ThrowIfNotFound(objectHandle);
+        }
+
         /// <summary>
         /// Gets the element.
         /// </summary>
         /// <param name="lookupInfo">The lookup information.</param>
         /// <param name="currElement">The element that starts the search.</param>
         /// <returns></returns>
-        public jcElementWrapper getElement(Stack<jcPageObjectLookupPair> lookupInfo, IWebElement currElement)
+        private jcElementWrapper getElement(Stack<jcPageObjectLookupPair> lookupInfo, IWebElement currElement)
         {
             if (lookupInfo.Count < 1)
             {

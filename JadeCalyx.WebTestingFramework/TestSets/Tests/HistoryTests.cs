@@ -7,6 +7,7 @@ using jcWebGuiTools;
 using NUnit.Framework;
 using TestSets.Utilities;
 using Common;
+using System.Threading;
 
 
 
@@ -108,9 +109,14 @@ namespace TestSets.Tests
             _browser.Maximize();
             _browser.GotoPage("main-page");
             _browser.GetPage().Click("view-history-anchor");
-            var currPage = _browser.GetPage();
-            currPage.Click("oldest-anchor");
-            var listItems = currPage.GetWebList("page-history-list");
+            var page = _browser.GetPage();
+
+            var preClickHashCode = page.GetElement("page-history-list").GetHashCode();
+            page.Click("oldest-anchor");
+            var changed = page.WaitTillHashChanges(preClickHashCode, "page-history-list");
+            Assume.That(changed, "History list did not change after click");
+            var listItems = page.GetWebList("page-history-list");
+
             var dateList = new List<DateTime>();
             foreach (var el in listItems)
             {
