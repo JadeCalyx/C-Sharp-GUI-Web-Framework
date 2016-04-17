@@ -12,19 +12,19 @@ namespace jcWebGuiTools
     /// </summary>
     public class jcPageFactory
     {
-        string _site;
         IWebDriver _driver;
         jcAddressAtlas _atlas;
+        jcPageObjectRepository _repository;
         /// <summary>
         /// Initializes a new instance of the <see cref="jcPageFactory"/> class.
         /// Factory for creating new page objects.
         /// </summary>
         /// <param name="driver">The driver.</param>
         /// <param name="atlas">The atlas.</param>
-        /// <param name="site">The site.</param>
-        public jcPageFactory(IWebDriver driver, jcAddressAtlas atlas, string site)
+        /// <param name="repository">The page object repository for this site.</param>
+        public jcPageFactory(IWebDriver driver, jcAddressAtlas atlas, jcPageObjectRepository repository)
         {
-            _site = site;
+            _repository = repository;
             _driver = driver;
             _atlas = atlas;
         }
@@ -48,11 +48,11 @@ namespace jcWebGuiTools
         private jcPage makePage(jcPage currPage, string newPageHandle)
         {
             if (currPage == null) {
-                currPage = new jcPage(_driver, _site, newPageHandle);
+                currPage = new jcPage(_driver, _repository, newPageHandle);
             }
             if (!currPage.Handle.Equals(newPageHandle))
             {
-                return new jcPage(_driver, _site, newPageHandle);
+                return new jcPage(_driver, _repository, newPageHandle);
             }
             else
             {

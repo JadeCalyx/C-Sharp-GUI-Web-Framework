@@ -14,21 +14,21 @@ namespace jcWebGuiTools
     public class jcPage
     {
         IWebDriver _driver;
-        string _site;
+        jcPageObjectRepository _repository;
         string _pageHandle;
         jcPageObjectAtlas _objectAtlas;
         /// <summary>
         /// Initializes a new instance of the <see cref="jcPage"/> class.
         /// </summary>
         /// <param name="driver">The selenium driver.</param>
-        /// <param name="site">The site handle.</param>
+        /// <param name="repository">The page object repository for this site.</param>
         /// <param name="pageHandle">The page handle.</param>
-        public jcPage(IWebDriver driver, string site, string pageHandle)
+        public jcPage(IWebDriver driver, jcPageObjectRepository repository, string pageHandle)
         {
             _driver = driver;
-            _site = site;
+            _repository = repository;
             _pageHandle = pageHandle;
-            _objectAtlas = new jcPageObjectAtlas(_site, _pageHandle);
+            _objectAtlas = new jcPageObjectAtlas(_repository, _pageHandle);
         }
         /// <summary>
         /// Gets the page handle. Setting is turned off.
@@ -88,17 +88,23 @@ namespace jcWebGuiTools
             var el = getElement(lookupInfo, null);
             return el.ThrowIfNotFound(objectHandle).GetAsList();
         }
-
+        /// <summary>
+        /// Waits the till hash changes.
+        /// </summary>
+        /// <param name="baseHash">The base hash.</param>
+        /// <param name="objectHandle">The object handle.</param>
+        /// <param name="timeout">The timeout.</param>
+        /// <returns></returns>
         public bool WaitTillHashChanges(int baseHash, string objectHandle, int timeout = 30)
         {
           
             var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);
             var el = getElement(lookupInfo, null);
-            var newHash = el.GetHashCode(baseHash);
+            var newHash = el.GetPageHashCode(baseHash);
             while ((baseHash == newHash) && (timeout-- > 0))
             {
                 Thread.Sleep(TimeSpan.FromSeconds(1));
-                newHash = getElement(lookupInfo, null).GetHashCode(baseHash);
+                newHash = getElement(lookupInfo, null).GetPageHashCode(baseHash);
             }
             if (baseHash == newHash)
             {
@@ -106,7 +112,11 @@ namespace jcWebGuiTools
             }
             return true;
         }
-
+        /// <summary>
+        /// Gets the element.
+        /// </summary>
+        /// <param name="objectHandle">The object handle.</param>
+        /// <returns></returns>
         public jcElementWrapper GetElement(string objectHandle)
         { 
             var lookupInfo = _objectAtlas.GetLooukupInfo(objectHandle);

@@ -23,7 +23,7 @@ namespace TestSets.Tests
         public void ClassSetup()
         {
             _appFile = new AppFile();
-            _browserFactory = new jcBrowserFactory("Wikipedia", _appFile.WebPrefix);
+            _browserFactory = new jcBrowserFactory(@".\SiteInfo\Wikipedia.xlsx", _appFile.WebPrefix);
         }
 
         [OneTimeTearDown]
@@ -64,7 +64,7 @@ namespace TestSets.Tests
             _browser.WaitForPageChange();
             var newPage = _browser.GetPage();
             Assert.That(newPage.Handle.Equals("view-history-page"),
-                String.Format("Landed on wrong page: {0}"), newPage.Handle);
+                String.Format("Landed on wrong page: {0}", newPage.Handle));
         }
 
         [Test]
@@ -111,7 +111,7 @@ namespace TestSets.Tests
             _browser.GetPage().Click("view-history-anchor");
             var page = _browser.GetPage();
 
-            var preClickHashCode = page.GetElement("page-history-list").GetHashCode();
+            var preClickHashCode = page.GetElement("page-history-list").GetPageHashCode();
             page.Click("oldest-anchor");
             var changed = page.WaitTillHashChanges(preClickHashCode, "page-history-list");
             Assume.That(changed, "History list did not change after click");

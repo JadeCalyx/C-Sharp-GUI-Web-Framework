@@ -99,16 +99,16 @@ namespace jcWebGuiTools
             return _element.Text;
         }
 
-        public int GetHashCode(int currHash)
+        public int GetPageHashCode(int currHash)
         {
             if (_element == null)
             {
                 return currHash;
             }
-            return GetHashCode();
+            return GetPageHashCode();
         }
 
-        public int GetHashCode()
+        public int GetPageHashCode()
         {
             return _element.GetAttribute("outerHTML").GetHashCode();
         }

@@ -18,21 +18,21 @@ namespace jcWebGuiTools
     {
         IWebDriver _driver;
         jcAddressAtlas _addressAtlas;
-        string _site;
+        jcPageObjectRepository _repository;
         jcPageFactory _pageFactory;
         jcPage _currPage = null;
         /// <summary>
         /// Initializes a new instance of the <see cref="jcBrowser"/> class.
         /// </summary>
         /// <param name="driverType">Type of the driver. Firefox or Chrome. </param>
-        /// <param name="site">The site handle or name.</param>
+        /// <param name="repository">The page object repository for this site.</param>
         /// <param name="urlPrefix">The URL prefix. The base url to be prefixed onto any address.</param>
-        public jcBrowser(string driverType, string site, string urlPrefix)
+        public jcBrowser(string driverType, jcPageObjectRepository repository, string urlPrefix)
         {
-            _site = site;
-            _addressAtlas = new jcAddressAtlas(urlPrefix, site);
+            _repository = repository;
+            _addressAtlas = new jcAddressAtlas(urlPrefix, _repository);
             setrDriver(driverType);
-            _pageFactory = new jcPageFactory(_driver, _addressAtlas, _site);
+            _pageFactory = new jcPageFactory(_driver, _addressAtlas, _repository);
         }
         /// <summary>
         /// Closes the browser.

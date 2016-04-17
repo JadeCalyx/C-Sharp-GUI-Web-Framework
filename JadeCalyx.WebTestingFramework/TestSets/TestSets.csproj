@@ -78,28 +78,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
-    <None Include="SiteInfo\Wikipedia\AddressInfo\addresses.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\archery-page.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\dummy.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\main-page-view-history.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\main-page.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\navigation-menu.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\revision-history-items.tsv">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="SiteInfo\Wikipedia\PageInfo\view-history-page.tsv">
+    <None Include="SiteInfo\Wikipedia.xlsx">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>

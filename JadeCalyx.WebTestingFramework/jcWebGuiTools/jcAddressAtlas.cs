@@ -13,16 +13,17 @@ namespace jcWebGuiTools
     {
         Dictionary<string, jcAddressObject> _addressIndex;
         string _prefix;
+        jcPageObjectRepository _repository;
         /// <summary>
         /// Initializes a new instance of the <see cref="jcAddressAtlas"/> class.
         /// </summary>
         /// <param name="prefix">The base url of the site being tests. </param>
-        /// <param name="site">The site handle. This will be used to lookup the 
-        /// file containing the addresses to load.</param>
-        public jcAddressAtlas(string prefix, string site) 
+        /// <param name="repository">The page object repository for this site.</param>
+        public jcAddressAtlas(string prefix, jcPageObjectRepository repository) 
         {
+            _repository = repository;
             _prefix = prefix.TrimEnd('/');
-            loadIndex(site);
+            loadIndex();
         }
         /// <summary>
         /// Gets the URL that maps to the handle.
@@ -56,16 +57,20 @@ namespace jcWebGuiTools
         /// <summary>
         /// Loads the index.
         /// </summary>
-        /// <param name="site">The site name handle.</param>
-        private void loadIndex(string site)
+        private void loadIndex()
         {
             _addressIndex = new Dictionary<string, jcAddressObject>();
-            int handle = 0;
-            int segment = 1;
-            int mask = 2;
-            var addresses = new jcAddressInfoReader(site).GetAddressList();
+            int handle = 1;
+            int segment = 2;
+            int mask = 3;
+            var addresses = _repository.GetAddressInfo();
             foreach (var address in addresses)
             {
+                if (address.Count < 4)
+                {
+                    throw new Exception(String.Format("Invalid address info, missing info: {0}",
+                        String.Join("\t", address)));
+                }
                 _addressIndex.Add(address.ElementAt(handle),
                     new jcAddressObject(address.ElementAt(segment),
                     address.ElementAt(mask)));

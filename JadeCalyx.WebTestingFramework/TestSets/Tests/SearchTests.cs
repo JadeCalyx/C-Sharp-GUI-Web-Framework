@@ -19,7 +19,7 @@ namespace TestSets.Tests
         public void ClassSetup()
         {
             _appFile = new AppFile();
-            _browserFactory = new jcBrowserFactory("Wikipedia", _appFile.WebPrefix);
+            _browserFactory = new jcBrowserFactory(@".\SiteInfo\Wikipedia.xlsx", _appFile.WebPrefix);
         }
 
         [OneTimeTearDown]

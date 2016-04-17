@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EPPlus, Version=4.0.5.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\EPPlus.4.0.5\lib\net20\EPPlus.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
@@ -47,17 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="jcAddressAtlas.cs" />
-    <Compile Include="jcAddressInfoReader.cs" />
     <Compile Include="jcAddressObject.cs" />
     <Compile Include="jcBrowserFactory.cs" />
     <Compile Include="jcElementHelper.cs" />
     <Compile Include="jcElementWrapper.cs" />
+    <Compile Include="jcExcelSiteInfoReader.cs" />
     <Compile Include="jcPageFactory.cs" />
     <Compile Include="jcPageObjectAtlas.cs" />
-    <Compile Include="jcPageObjectInfoReader.cs" />
     <Compile Include="jcPageObjectLookupPair.cs" />
     <Compile Include="jcBrowser.cs" />
     <Compile Include="jcPage.cs" />
+    <Compile Include="jcPageObjectRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
